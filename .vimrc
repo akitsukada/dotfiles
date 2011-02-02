@@ -86,7 +86,7 @@ autocmd FileType make setlocal noexpandtab
 filetype plugin on
 filetype indent on
 
-" C-c, C-v でクリップボードにコピー、はりつけ
+" C-c, C-v でクリップボードにコピー、貼り付け
 nnoremap <silent><C-c> :.w !pbcopy<CR><CR>
 vnoremap <silent><C-c> :w !pbcopy<CR><CR>
 nnoremap <silent><C-v> :r !pbpaste<CR><CR>
