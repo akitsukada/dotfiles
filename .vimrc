@@ -1,5 +1,4 @@
 syntax on
-
 colorscheme koehler
 
 set nocompatible
