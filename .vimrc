@@ -67,10 +67,9 @@ imap <silent> <C-d><C-d> <C-R>=strftime("%Y/%b/%d (%a)")<CR>
 imap <silent> <C-t><C-t> <C-R>=strftime("%H:%M:%S")<CR>
 imap <silent> <C-d><C-t> <C-R>=strftime("%Y/%b/%d (%a) %H:%M:%S")<CR>
 imap <silent> <C-e><C-e> <C-R>=strftime("%Y/%b/%d (%a) %H:%M:%S by Akihiro Tsukada.")<CR>
-"imap <C-k> aaa
 "" vmap
 vmap <BS> x
-
+ 
 " omni補完
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
