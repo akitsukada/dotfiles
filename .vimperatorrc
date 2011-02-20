@@ -1,0 +1,55 @@
+map <C-u> gf
+vmap <silent> <C-g> y<Esc><Esc>P
+map <C-f> /
+
+" Visualモード中にjkを押して選択範囲を上下に伸ばせるように
+vmap <silent> j <Down>
+vmap <silent> k <Up>
+
+nmap cp :copy<Space>
+map ,s :so _vimperatorrc<CR>
+
+cnoremap <Up> <S-Tab>
+cnoremap <Down> <Tab>:
+
+map <A-Left> H
+map <A-Right> L
+noremap ! :set invusermode<CR>
+
+set! ui.caretWidth=5
+
+"各種バー表示をトグル
+noremap <C-1> :set guioptions=r<cr>
+noremap <C-2> :set guioptions=Br<cr>
+noremap <C-3> :set guioptions=BmTr<cr>
+
+" key binds
+noremap J 7<C-e>
+noremap K 7<C-y>
+
+" set
+set visualbell
+hi Bell display: none;
+
+set guioptions=m
+set ignorecase
+set wildoptions=auto
+set complete=l
+set editor=vi
+set showstatuslinks=1
+"set focuscontent
+
+map ,t :twitter<Space>
+map ,T :twitter!<Space>
+map ,@ :twitter!@<CR>
+map ,mt :mr<Space>twitter-search-pcod-no-jp<Space>
+map ,mT :mr<Space>twitter-search-pcod-no-jp<Space>["akitsukada"]<CR>
+map ,mf :mr<Space>favotter-new<Space>
+map ,mF :mr<Space>favotter-new<Space>["akitsukada"]<CR>
+
+
+"hi Hint font-weight:bold; font-size:12px; color:white; background-color:red; border-style:solid; padding:1px 1px 0px 1px; position:absolute;
+hi Hint font-weight:bold; font-size:12px; color:black; border-color:ButtonShadow; background-color:#5ff; border-style:solid; padding:1px; line-height:1;
+hi StatusLine color:black; background:#bbb; font-size:15px;
+hi CompDesc color:#272; width:50%;
+hi Preview color:#44C;
