@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/akitsukada/programming/ruby/SetucoCMSR/config/locales'
+let g:netrw_dirhist_2='/Library/WebServer/Documents/SetucoCMS/application/configs'
+let g:netrw_dirhist_3='/Users/akitsukada/programming/ruby/SetucoCMSR/app/views/layouts'
+let g:netrw_dirhist_4='/Users/akitsukada/.vim/bundle/yankring.vim'
+let g:netrw_dirhist_5='/Users/akitsukada/programming/ruby/SetucoCMSR/app/views/layouts/default'
