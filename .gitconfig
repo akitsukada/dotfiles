@@ -1,16 +1,16 @@
 [user]
-	email = tsukada.akihiro@gmail.com
 	name = akitsukada
+	email = tsukada.akihiro@gmail.com
 [color]
 	ui = auto
+[core]
+	editor = vim
+	quotepath = false
+  pager = less -r
+  ecxludesfile = ~/.gitignore
 [alias]
+	st = status
 	co = checkout
 	br = branch
-	st = status
-	xlog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	vlog = log --pretty=format:'%h by %an, %ad: %s' --date=relative
-	glog = log --graph --pretty=format:\"%C(red)%h%Creset %C(cyan)<%an>%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset\" --abbrev-commit --date=relative
-[core]
-	editor = /usr/bin/vim
-	pager = less -r
-	ecxludesfile = ~/.gitignore
+	ls = ls-files
+	glog = log --pretty=format:\"%C(red)%h%Creset %C(cyan)<%an>%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset\" --abbrev-commit --date=relative --graph
