@@ -1,5 +1,4 @@
 source ~/.profile
-PROMPT='%~$ '
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /opt/local/bin /opt/local/sbin
 bindkey -e
 
@@ -44,3 +43,11 @@ function go() {
 function ;z() {
   source ~/.zshrc
 }
+
+# プロンプト
+autoload colors
+colors
+PROMPT="%{${fg[cyan]}%}[%n@%m]%(!.#.$) %{${reset_color}%}"
+PROMPT2="%{${fg[white]}%}%_> %{${reset_color}%}"
+SPROMPT="%{${fg[yellow]}%}correct: %R -> %r [nyae]? %{${reset_color}%}"
+RPROMPT="%{${fg[yellow]}%}[%~]%{${reset_color}%}"
