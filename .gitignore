@@ -2,3 +2,5 @@
 *.lock
 .DS_Store
 nbproject
+doc/tags
+doc/tags-ja

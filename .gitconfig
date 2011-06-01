@@ -8,6 +8,7 @@
 	quotepath = false
   pager = less -r
   ecxludesfile = ~/.gitignore
+	excludesfile = /Users/akitsukada/.gitignore
 [alias]
 	st = status
 	co = checkout

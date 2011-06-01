@@ -87,6 +87,8 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 "" reload vimrc
 nmap ;s :source ~/.vimrc<CR>
+"" edit vimrc
+nmap ;v :tabe ~/.vimrc<CR>
 "" omni補完とか
 setlocal omnifunc=syntaxcomplete#Complete
 
@@ -114,9 +116,10 @@ autocmd FileType make setlocal noexpandtab
 "" insert magic comment
 imap <C-c> # -*- coding:UTF-8 -*-
 nmap <C-c> ggO# -*- coding:UTF-8 -*-<ESC>
-"" shortcuts for view
+"" shortcuts for edit rails
 imap <C-e> <%=  %><left><left><left>
 imap <C-r> <%  %><left><left><left>
+imap <C-w> #{}<left>
 "" when open new (*.rb|*.erb) file, insert magic comment automatically
 autocmd BufNewFile *.rb,*.erb 0r ~/.vim/templates/rb.tpl
 autocmd BufNewFile,BufRead *.erb set filetype=html
