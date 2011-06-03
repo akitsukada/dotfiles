@@ -55,7 +55,7 @@ set expandtab
 "------------------------------------
 " カーソル行/列をハイライト
 set cursorline
-set cursorcolumn
+"set cursorcolumn
 " カレントウィンドウにのみ罫線を引く
 augroup cch
   autocmd! cch
@@ -65,7 +65,7 @@ augroup END
 " ハイライトをかっこよく
 "highlight CursorLine ctermfg=NONE ctermbg=darkgray cterm=NONE
 highlight CursorLine ctermfg=NONE ctermbg=darkgray cterm=NONE
-highlight CursorColumn ctermfg=NONE ctermbg=darkgray cterm=NONE
+"highlight CursorColumn ctermfg=NONE ctermbg=darkgray cterm=NONE
 
 " 保存時に行末の空白を除去する
 autocmd BufWritePre * :%s/\s\+$//ge
