@@ -91,6 +91,7 @@ nmap ;s :source ~/.vimrc<CR>
 nmap ;v :tabe ~/.vimrc<CR>
 "" omni補完とか
 setlocal omnifunc=syntaxcomplete#Complete
+"inoremap <C-f> <C-x><C-o>
 
 "" ファイルを開いたときに前回の編集箇所に移動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
