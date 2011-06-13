@@ -51,3 +51,6 @@ PROMPT="%{${fg[cyan]}%}[%n@%m]%(!.#.$) %{${reset_color}%}"
 PROMPT2="%{${fg[white]}%}%_> %{${reset_color}%}"
 SPROMPT="%{${fg[yellow]}%}correct: %R -> %r [nyae]? %{${reset_color}%}"
 RPROMPT="%{${fg[yellow]}%}[%~]%{${reset_color}%}"
+
+# plugins
+source .zsh/plugin/incr*.zsh

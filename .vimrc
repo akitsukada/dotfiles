@@ -121,7 +121,7 @@ nmap <C-c> ggO# -*- coding:UTF-8 -*-<ESC>
 imap <C-e> <%=  %><left><left><left>
 imap <C-r> <%  %><left><left><left>
 imap <C-w> #{}<left>
-"" when open new (*.rb|*.erb) file, insert magic comment automatically
+"" when open new (*.rb) file, insert magic comment automatically
 autocmd BufNewFile *.rb,*.erb 0r ~/.vim/templates/rb.tpl
 autocmd BufNewFile,BufRead *.erb set filetype=html
 
