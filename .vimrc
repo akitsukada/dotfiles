@@ -1,13 +1,41 @@
 "------------------------------------
+"  Vundle
+"------------------------------------
+filetype off
+set rtp+=~/.vim/vundle/
+call vundle#rc()
+
+" 利用中のプラグインをBundle
+" github repos
+Bundle 'gmarik/vundle'
+Bundle 'Shougo/neocomplcache'
+"Bundle 'Shougo/unite.vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'tpope/vim-surround'
+Bundle 'thinca/vim-quickrun'
+Bundle 'thinca/vim-ref'
+Bundle 'kana/vim-fakeclip'
+" vim-scripts repos
+Bundle 'rails.vim'
+
+" non github repos
+
+filetype plugin indent on
+"------------------------------------
 "  BasicSettings
 "------------------------------------
 colorscheme koehler
+
 syntax on
 set nocompatible
 set smartindent
 set smarttab
 set smartcase
 set ignorecase
+set expandtab
+set tabstop=2     " ファイル中のタブ文字の表示幅
+set shiftwidth=2  " 自動で挿入されるインデント幅
+set softtabstop=2 " タブ押下時に挿入されるスペース数
 set number
 set hlsearch
 set enc=utf-8                             " 文字コード
@@ -25,30 +53,6 @@ nmap * *zz
 nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
-
-"------------------------------------
-"  pathogen
-"------------------------------------
-" pathogenでftdetectなどをloadさせるために一度ファイルタイプ判定をoff
-filetype off
-" pathogen.vimによってbundle配下のpluginをpathに加える
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-set helpfile=$VIMRUNTIME/doc/help.txt
-" ファイルタイプ判定をon
-filetype on
-filetype plugin on
-filetype indent on
-
-"------------------------------------
-"  edit tab settings
-"------------------------------------
-"" 共通設定
-set shiftwidth=2
-set tabstop=2
-set softtabstop=2
-set expandtab
-"" タイプ別設定は.vim/indent/
 
 "------------------------------------
 "  現在位置のハイライト
@@ -90,46 +94,29 @@ nmap ;s :source ~/.vimrc<CR>
 "" edit vimrc
 nmap ;v :tabe ~/.vimrc<CR>
 "" omni補完とか
-setlocal omnifunc=syntaxcomplete#Complete
-"inoremap <C-f> <C-x><C-o>
+"setlocal omnifunc=syntaxcomplete#Complete
 
 "" ファイルを開いたときに前回の編集箇所に移動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 
 "------------------------------------
+"  マクロ
+"------------------------------------
 "  数字の上で<C-i> ⇨ 縦に連番をふる
-"------------------------------------
 nnoremap <C-i> qayyp<C-a>q@a
+" 日付挿入
+"yyyy/mm/dd
+inoremap <c-d><c-d> <c-r>=strftime("%Y/%m/%d")<cr>
+inoremap <c-d><c-t> <c-r>=strftime("%Y/%m/%d %H:%M:%S")<cr>
+inoremap <c-t><c-t> <c-r>=strftime("%H:%M:%S")<cr>
 
 "------------------------------------
-"  vim-ref
+"  neocomplcache
 "------------------------------------
-let g:ref_phpmanual_path = '~/.vim/bundle/vim-ref/manuals/phpmanuals'
-
-"------------------------------------
-"  for makefile
-"------------------------------------
-autocmd FileType make setlocal noexpandtab
-
-""------------------------------------
-""  for rails
-""------------------------------------
-"" insert magic comment
-imap <C-c> # -*- coding:UTF-8 -*-
-nmap <C-c> ggO# -*- coding:UTF-8 -*-<ESC>
-"" shortcuts for edit rails
-imap <C-e> <%=  %><left><left><left>
-imap <C-r> <%  %><left><left><left>
-imap <C-w> #{}<left>
-"" when open new (*.rb) file, insert magic comment automatically
-autocmd BufNewFile *.rb,*.erb 0r ~/.vim/templates/rb.tpl
-autocmd BufNewFile,BufRead *.erb set filetype=html
-
-"------------------------------------
-"  for js
-"------------------------------------
-autocmd BufNewFile,BufRead *.js set filetype=javascript
-autocmd Filetype javascript set omnifunc=javascriptcomplete#CompleteJS
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_min_syntax_length = 3
 
 "------------------------------------
 "  functions
@@ -145,3 +132,21 @@ function! SnipMid(str, len, mask)
   return (len_head > 0 ? a:str[: len_head - 1] : '') . a:mask . (len_tail > 0 ? a:str[-len_tail :] : '')
 endfunction
 
+function! HandleURI() " \w でカーソル下のURL開く
+  let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;:]*')
+  echo s:uri
+  if s:uri != ""
+    exec "!open \"" . s:uri . "\""
+  else
+    echo "No URI found in line."
+  endif
+endfunction
+
+map <Leader>w :call HandleURI()<CR>
+
+"-----------------------------------
+" 外部ファイル読み込み
+"-----------------------------------
+if filereadable(expand('~/.vimrc.presen'))
+  source ~/.vimrc.presen
+endif
