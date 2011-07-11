@@ -15,3 +15,5 @@
 	br = branch
 	ls = ls-files
 	glog = log --pretty=format:\"%C(red)%h%Creset %C(cyan)<%an>%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset\" --abbrev-commit --date=relative --graph
+[http]
+    sslVerify = false
