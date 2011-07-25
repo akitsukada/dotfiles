@@ -53,4 +53,4 @@ SPROMPT="%{${fg[yellow]}%}correct: %R -> %r [nyae]? %{${reset_color}%}"
 RPROMPT="%{${fg[yellow]}%}[%~]%{${reset_color}%}"
 
 # plugins
-source ~/.zsh/plugin/incr*.zsh
+#source ~/.zsh/plugin/incr*.zsh
