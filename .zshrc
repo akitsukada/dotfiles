@@ -1,5 +1,5 @@
 source ~/.profile
-zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /opt/local/bin /opt/local/sbin
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
 bindkey -e
 
 # cd

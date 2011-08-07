@@ -9,9 +9,10 @@ call vundle#rc()
 " github repos
 Bundle 'gmarik/vundle'
 Bundle 'Shougo/neocomplcache'
-"Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/unite.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
+" ↓ \r で編集中のプログラム実行
 Bundle 'thinca/vim-quickrun'
 Bundle 'thinca/vim-ref'
 Bundle 'kana/vim-fakeclip'
@@ -24,18 +25,21 @@ filetype plugin indent on
 "------------------------------------
 "  BasicSettings
 "------------------------------------
-colorscheme koehler
 
 syntax on
+colorscheme koehler
 set nocompatible
 set smartindent
 set smarttab
 set smartcase
 set ignorecase
+
+" これら以外の言語固有tab設定は~/.vim/indent/$lang.vim
 set expandtab
 set tabstop=2     " ファイル中のタブ文字の表示幅
 set shiftwidth=2  " 自動で挿入されるインデント幅
 set softtabstop=2 " タブ押下時に挿入されるスペース数
+
 set number
 set hlsearch
 set enc=utf-8                             " 文字コード
@@ -44,9 +48,17 @@ set fencs=utf-8,iso-2022-jp,euc-jp,cp932
 set showtabline=2                         " タブを常に表示
 set laststatus=2                          " ステータスラインを表示
 set clipboard+=unnamed                    " VimバッファをOSクリップボードと共有
-"" ステータスラインの表示内容
+set noswapfile
+set wildmenu
+
+" TABと行末spaceの可視化
+set list
+set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
+
+" ステータスラインの表示内容
 set statusline=%{expand('%:p:t')}\ %<\(%{SnipMid(expand('%:p:h'),80-len(expand('%:p:t')),'...')}\)%=\ %m%r%y%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}[%3l,%3c]
-"" 検索語が画面中央にくるように
+
+" 検索語が画面中央にくるように
 nmap n nzz
 nmap N Nzz
 nmap * *zz
@@ -54,25 +66,31 @@ nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
 
+"" 保存時に行末の空白を除去する // 勝手にやられるとdiffがひどいことになったりするので停止
+"autocmd BufWritePre * :%s/\s\+$//ge
+
 "------------------------------------
 "  現在位置のハイライト
 "------------------------------------
 " カーソル行/列をハイライト
 set cursorline
-"set cursorcolumn
-" カレントウィンドウにのみ罫線を引く
+" カレントペインのみハイライト
 augroup cch
   autocmd! cch
   autocmd WinLeave * set nocursorline
   autocmd WinEnter,BufRead * set cursorline
 augroup END
 " ハイライトをかっこよく
-"highlight CursorLine ctermfg=NONE ctermbg=darkgray cterm=NONE
-highlight CursorLine ctermfg=NONE ctermbg=darkgray cterm=NONE
-"highlight CursorColumn ctermfg=NONE ctermbg=darkgray cterm=NONE
+" TODO
+highlight CursorLine term=none cterm=none ctermfg=none ctermbg=darkgray
 
-" 保存時に行末の空白を除去する
-autocmd BufWritePre * :%s/\s\+$//ge
+"------------------------------------
+"  全角スペースのハイライト
+"------------------------------------
+function! JISX0208SpaceHilight()
+  syntax match JISX0208Space "　" display containedin=ALL
+  highlight JISX0208Space term=underline ctermbg=LightCyan
+endf
 
 "------------------------------------
 "  keymap
@@ -81,23 +99,28 @@ autocmd BufWritePre * :%s/\s\+$//ge
 "" C-← → を使いたいときは、一旦制御文字をvim用のマッピングに変更する
 "map [5D <C-Right>
 "map [5C <C-Left>
+"
 " コントロール＋NPでタブ移動
 nnoremap <C-N> gt
 nnoremap <C-P> gT
+
 "" CTRL-hjklでsplitウィンドウ移動
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
+
 "" reload vimrc
-nmap ;s :source ~/.vimrc<CR>
+nnoremap ;s :source ~/.vimrc<CR>
 "" edit vimrc
-nmap ;v :tabe ~/.vimrc<CR>
-"" omni補完とか
-"setlocal omnifunc=syntaxcomplete#Complete
+nnoremap ;v :tabe ~/.vimrc<CR>
 
 "" ファイルを開いたときに前回の編集箇所に移動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
+
+"" for ruby
+inoremap <C-r> #!/usr/bin/env ruby
+inoremap <C-c> # -*- coding:UTF-8 -*-
 
 "------------------------------------
 "  マクロ
@@ -147,6 +170,5 @@ map <Leader>w :call HandleURI()<CR>
 "-----------------------------------
 " 外部ファイル読み込み
 "-----------------------------------
-if filereadable(expand('~/.vimrc.presen'))
-  source ~/.vimrc.presen
-endif
+
+"none
