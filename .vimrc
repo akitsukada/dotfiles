@@ -1,6 +1,5 @@
-"------------------------------------
-"  Vundle
-"------------------------------------
+" Vundle {{{
+
 filetype off
 set rtp+=~/.vim/vundle/
 call vundle#rc()
@@ -10,6 +9,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
+Bundle 'h1mesuke/unite-outline'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
 " ↓ \r で編集中のプログラム実行
@@ -18,13 +18,14 @@ Bundle 'thinca/vim-ref'
 Bundle 'kana/vim-fakeclip'
 " vim-scripts repos
 Bundle 'rails.vim'
+Bundle 'svn-diff.vim'
+Bundle 'vim-ruby'
 
 " non github repos
-
 filetype plugin indent on
-"------------------------------------
-"  BasicSettings
-"------------------------------------
+" }}}
+
+" BasicSettings {{{
 
 syntax on
 colorscheme koehler
@@ -68,10 +69,18 @@ nmap g# g#zz
 
 "" 保存時に行末の空白を除去する // 勝手にやられるとdiffがひどいことになったりするので停止
 "autocmd BufWritePre * :%s/\s\+$//ge
+""}}}
 
-"------------------------------------
-"  現在位置のハイライト
-"------------------------------------
+" php {{{
+
+let php_folding = 1
+let php_sql_query = 1
+let php_htmlInStrings = 1
+let php_noShortTags = 1
+"}}}
+
+"  現在位置のハイライト {{{
+
 " カーソル行/列をハイライト
 set cursorline
 " カレントペインのみハイライト
@@ -83,18 +92,18 @@ augroup END
 " ハイライトをかっこよく
 " TODO
 highlight CursorLine term=none cterm=none ctermfg=none ctermbg=darkgray
+"}}}
 
-"------------------------------------
-"  全角スペースのハイライト
-"------------------------------------
+"  全角スペースのハイライト {{{
+
 function! JISX0208SpaceHilight()
   syntax match JISX0208Space "　" display containedin=ALL
   highlight JISX0208Space term=underline ctermbg=LightCyan
 endf
+"}}}
 
-"------------------------------------
-"  keymap
-"------------------------------------
+" keymap {{{
+
 "" change tabpage
 "" C-← → を使いたいときは、一旦制御文字をvim用のマッピングに変更する
 "map [5D <C-Right>
@@ -111,9 +120,9 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 
 "" reload vimrc
-nnoremap ;s :source ~/.vimrc<CR>
+nnoremap ;s :source $MYVIMRC<CR>
 "" edit vimrc
-nnoremap ;v :tabe ~/.vimrc<CR>
+nnoremap ;v :tabe $MYVIMRC<CR>
 
 "" ファイルを開いたときに前回の編集箇所に移動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
@@ -121,10 +130,10 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "norm
 "" for ruby
 inoremap <C-r> #!/usr/bin/env ruby
 inoremap <C-c> # -*- coding:UTF-8 -*-
+"}}}
 
-"------------------------------------
-"  マクロ
-"------------------------------------
+" マクロ {{{
+
 "  数字の上で<C-i> ⇨ 縦に連番をふる
 nnoremap <C-i> qayyp<C-a>q@a
 " 日付挿入
@@ -132,18 +141,18 @@ nnoremap <C-i> qayyp<C-a>q@a
 inoremap <c-d><c-d> <c-r>=strftime("%Y/%m/%d")<cr>
 inoremap <c-d><c-t> <c-r>=strftime("%Y/%m/%d %H:%M:%S")<cr>
 inoremap <c-t><c-t> <c-r>=strftime("%H:%M:%S")<cr>
+"}}}
 
-"------------------------------------
-"  neocomplcache
-"------------------------------------
+" neocomplcache {{{
+
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 3
+"}}}
 
-"------------------------------------
-"  functions
-"------------------------------------
+" functions {{{
+
 function! SnipMid(str, len, mask)
   if a:len >= len(a:str)
     return a:str
@@ -166,9 +175,15 @@ function! HandleURI() " \w でカーソル下のURL開く
 endfunction
 
 map <Leader>w :call HandleURI()<CR>
+"}}}
 
-"-----------------------------------
-" 外部ファイル読み込み
-"-----------------------------------
+" fold {{{
 
-"none
+set foldenable
+set foldmethod=marker
+set foldcolumn=3
+set foldlevel=0
+set foldopen=hor,search
+"set foldclose=all
+set foldminlines=5
+"}}}

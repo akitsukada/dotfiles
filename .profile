@@ -13,7 +13,11 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=${HOME}/BIN/Lha/bin:${PATH}
 
 # vim
+alias vim='/usr/bin/vim'
 export EDITOR=vim
+
+# svn
+export SVN_EDITOR='/usr/bin/vim'
 
 # rvm
 if [[ -s $HOME/.rvm/scripts/rvm ]] then
