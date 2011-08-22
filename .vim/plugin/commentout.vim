@@ -1,5 +1,6 @@
 " commentout.vim
 " lhs comments
+nmap ;/ 0i//<ESC>
 vmap ;# :s/^/#/<CR>:nohlsearch<CR>
 vmap ;/ :s/^/\/\//<CR>:nohlsearch<CR>
 vmap ;> :s/^/> /<CR>:nohlsearch<CR>
