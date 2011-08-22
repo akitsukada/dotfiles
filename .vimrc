@@ -12,7 +12,6 @@ Bundle 'Shougo/unite.vim'
 Bundle 'h1mesuke/unite-outline'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
-" ↓ \r で編集中のプログラム実行
 Bundle 'thinca/vim-quickrun'
 Bundle 'thinca/vim-ref'
 Bundle 'kana/vim-fakeclip'
@@ -28,7 +27,7 @@ filetype plugin indent on
 " BasicSettings {{{
 
 syntax on
-colorscheme koehler
+colorscheme desert
 set nocompatible
 set smartindent
 set smarttab
@@ -36,7 +35,7 @@ set smartcase
 set ignorecase
 
 " これら以外の言語固有tab設定は~/.vim/indent/$lang.vim
-set expandtab
+"set expandtab
 set tabstop=2     " ファイル中のタブ文字の表示幅
 set shiftwidth=2  " 自動で挿入されるインデント幅
 set softtabstop=2 " タブ押下時に挿入されるスペース数
@@ -67,12 +66,14 @@ nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
 
+" indent
+vnoremap + !~/.vim/indent/indent-equal.rb<cr>
+
 "" 保存時に行末の空白を除去する // 勝手にやられるとdiffがひどいことになったりするので停止
 "autocmd BufWritePre * :%s/\s\+$//ge
 ""}}}
 
 " php {{{
-
 let php_folding = 1
 let php_sql_query = 1
 let php_htmlInStrings = 1
@@ -82,16 +83,16 @@ let php_noShortTags = 1
 "  現在位置のハイライト {{{
 
 " カーソル行/列をハイライト
-set cursorline
+"set cursorline
 " カレントペインのみハイライト
-augroup cch
-  autocmd! cch
-  autocmd WinLeave * set nocursorline
-  autocmd WinEnter,BufRead * set cursorline
-augroup END
-" ハイライトをかっこよく
-" TODO
-highlight CursorLine term=none cterm=none ctermfg=none ctermbg=darkgray
+"augroup cch
+"  autocmd! cch
+"  autocmd WinLeave * set nocursorline
+"  autocmd WinEnter,BufRead * set cursorline
+"augroup END
+"" ハイライトをかっこよく
+"" TODO
+"highlight CursorLine term=none cterm=none ctermfg=none ctermbg=darkgray
 "}}}
 
 "  全角スペースのハイライト {{{
@@ -130,6 +131,9 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "norm
 "" for ruby
 inoremap <C-r> #!/usr/bin/env ruby
 inoremap <C-c> # -*- coding:UTF-8 -*-
+
+" gf時に新しいタブで
+nnoremap gf :tabe <cfile><cr>
 "}}}
 
 " マクロ {{{
@@ -185,5 +189,9 @@ set foldcolumn=3
 set foldlevel=0
 set foldopen=hor,search
 "set foldclose=all
-set foldminlines=5
+set foldminlines=2
+"}}}
+
+" Align {{{
+let g:Align_xstrlen=3
 "}}}
