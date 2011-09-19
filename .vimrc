@@ -20,7 +20,6 @@ Bundle 'kana/vim-fakeclip'
 " vim-scripts repos
 Bundle 'rails.vim'
 Bundle 'svn-diff.vim'
-Bundle 'javascript.vim'
 
 " non github repos
 filetype plugin indent on
