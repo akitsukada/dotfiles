@@ -1,10 +1,11 @@
 escape ^Tt
-term screen-256color
 zombie 
 hardstatus alwayslastline "[%02c] %`%-w%{=b bw}%n %t%{-}%+w"
 defencoding UTF-8
 encoding UTF-8
 termcapinfo * 'hs:ts=\E]2;:fs=\007:ds=\E]0;screen\007'
+termcapinfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+caption always "%{=r dd}%-Lw%40L>%?%F%{=b dR}%:[%? %n%f %t %?%F%{-}%:]%?%+Lw %?%F%-012=いまここ%:%=%?"
 altscreen on
 defscrollback 10000
 autodetach off
