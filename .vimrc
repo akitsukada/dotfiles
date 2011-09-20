@@ -9,6 +9,8 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/vimshell'
+Bundle 'Shougo/vimproc'
 Bundle 'h1mesuke/unite-outline'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
@@ -18,7 +20,6 @@ Bundle 'kana/vim-fakeclip'
 " vim-scripts repos
 Bundle 'rails.vim'
 Bundle 'svn-diff.vim'
-Bundle 'vim-ruby'
 
 " non github repos
 filetype plugin indent on
@@ -27,7 +28,7 @@ filetype plugin indent on
 " BasicSettings {{{
 
 syntax on
-colorscheme desert
+colorscheme koehler
 set nocompatible
 set smartindent
 set smarttab
@@ -35,10 +36,10 @@ set smartcase
 set ignorecase
 
 " これら以外の言語固有tab設定は~/.vim/indent/$lang.vim
-"set expandtab
-set tabstop=2     " ファイル中のタブ文字の表示幅
-set shiftwidth=2  " 自動で挿入されるインデント幅
-set softtabstop=2 " タブ押下時に挿入されるスペース数
+set expandtab
+set tabstop=4     " ファイル中のタブ文字の表示幅
+set shiftwidth=4  " 自動で挿入されるインデント幅
+set softtabstop=4 " タブ押下時に挿入されるスペース数
 
 set number
 set hlsearch
@@ -52,8 +53,8 @@ set noswapfile
 set wildmenu
 
 " TABと行末spaceの可視化
-set list
-set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
+set nolist
+"set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
 
 " ステータスラインの表示内容
 set statusline=%{expand('%:p:t')}\ %<\(%{SnipMid(expand('%:p:h'),80-len(expand('%:p:t')),'...')}\)%=\ %m%r%y%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}[%3l,%3c]
