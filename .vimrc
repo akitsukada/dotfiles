@@ -74,13 +74,6 @@ vnoremap + !~/.vim/indent/indent-equal.rb<cr>
 "autocmd BufWritePre * :%s/\s\+$//ge
 ""}}}
 
-" php {{{
-let php_folding = 1
-let php_sql_query = 1
-let php_htmlInStrings = 1
-let php_noShortTags = 1
-"}}}
-
 "  現在位置のハイライト {{{
 
 " カーソル行/列をハイライト
