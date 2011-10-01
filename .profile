@@ -7,7 +7,7 @@ alias pu='phpunit'
 alias javac="javac -J-Dfile.encoding=UTF8"
 
 # MacPorts Installer addition on 2011-05-05_at_10:31:31: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:$PATH
 # Finished adapting your PATH environment variable for use with MacPorts.
 
 # lha
@@ -24,3 +24,9 @@ export SVN_EDITOR='/usr/bin/vim'
 if [[ -s $HOME/.rvm/scripts/rvm ]] then
   source $HOME/.rvm/scripts/rvm
 fi
+
+# nvm
+. ~/.nvm/nvm.sh
+
+# node
+export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules

@@ -17,6 +17,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'thinca/vim-quickrun'
 Bundle 'thinca/vim-ref'
 Bundle 'kana/vim-fakeclip'
+Bundle 'mattn/calendar-vim'
 " vim-scripts repos
 Bundle 'rails.vim'
 Bundle 'svn-diff.vim'
@@ -147,6 +148,7 @@ let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 3
+let g:NeoComplCache_CachingLimitFileSize = 6000
 "}}}
 
 " functions {{{
@@ -189,3 +191,19 @@ set foldminlines=2
 " Align {{{
 let g:Align_xstrlen=3
 "}}}
+
+" {{{ calendar.vim
+"週番号表示
+"let g:calendar_weeknm=0
+"カレンダーディレクトリ指定
+"let g:calendar_diary='diary'
+""月
+"let g:calendar_mruler ='睦月,如月,弥生,卯月,皐月,水無月,文月,葉月,長月,神無月,霜月,師走'
+"let g:calendar_mruler ='JANUARY,FEBRUARY,MARCH,APRIL,MAY,JUNE,JULY,AUGUST,SEPTEMBER,OCTOBER,NOVEMBER,DECEMBER'
+""let g:calendar_mruler ='Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec'
+"let g:calendar_mruler
+"='睦月:Jan,如月:Feb,弥生:Mar,卯月:Apr,皐月:May,水無月:Jun,文月:Jul,葉月:Aug,長月:Sep,神無月:Oct,霜月:Nov,師走:Dec'
+""曜日
+let g:calendar_wruler = '日 月 火 水 木 金 土'
+"let g:calendar_wruler = 'Su Mo Tu We Th Fr Sa'
+" }}}
