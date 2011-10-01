@@ -135,11 +135,10 @@ nnoremap gf :tabe <cfile><cr>
 
 "  数字の上で<C-i> ⇨ 縦に連番をふる
 nnoremap <C-i> qayyp<C-a>q@a
-" 日付挿入
-"yyyy/mm/dd
 inoremap <c-d><c-d> <c-r>=strftime("%Y/%m/%d")<cr>
 inoremap <c-d><c-t> <c-r>=strftime("%Y/%m/%d %H:%M:%S")<cr>
-inoremap <c-t><c-t> <c-r>=strftime("%H:%M:%S")<cr>
+inoremap <c-s><c-n> akihiro_tsukada<cr>
+inoremap <c-s><c-m> akihiro_tsukada<akihiro_tsukada@dwango.co.jp><cr>
 "}}}
 
 " neocomplcache {{{
